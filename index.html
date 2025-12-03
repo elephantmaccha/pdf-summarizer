@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>判決文書要約（OpenAI連携）</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h1>判決文書要約（OpenAI連携）</h1>
+  <form id="summary-form">
+    <label>OpenAI APIキー:
+      <input type="password" id="apikey" required placeholder="sk-...">
+    </label>
+    <br>
+    <label>テキスト形式の判決文書を選択:
+      <input type="file" id="txt-file" accept=".txt" required />
+    </label>
+    <br>
+    <button type="submit">要約する</button>
+  </form>
+  <div class="prompt-area">
+<pre id="system-prompt">
+あなたは法律専門家であり、実務家や法科大学院生向けに判例要約を作成するAIです。
+以下の判決文を分析し、**判決文の流れに沿って**要旨を簡潔に整理してください。
+
+必ず下記の出力形式で、「日本語」で要約してください。
+【出力形式（4見出し、記載例も含む）】
+1.事案の概要:
+（日本語500文字以内。どのような訴訟か/当事者・請求内容/前置的事実も含め要点だけ簡潔に）
+
+2.主要な法的論点:
+（日本語300文字以内。判決で主に検討された条文・法的論点を記載、できるだけ条文番号も明示）
+
+3.裁判所の判断:
+（日本語300文字以内。判決文の構成・流れに沿って要点をまとめる。どの論点をどう認定・解釈したか、順を追って簡潔に）
+
+4.判例の意義:
+（日本語300文字以内。判決文に即した内容にとどめ、解説や一般論の追加説明は不要）
+
+【追加注意】
+- 必ず4つの番号付き見出しごとに出力。
+- 見出し名や番号も省略不可。
+- 1見出しごとに指定文字数を超えないこと（指示違反の場合、同文を切り詰める）。
+- 判決文の流れに沿う。独自見解や一般的な解説は不要。
+</pre>
+  </div>
+  <div id="result-area">
+    <h2>要約結果</h2>
+    <div id="summary-result"></div>
+  </div>
+  <div id="loader" style="display:none;">要約中...</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
