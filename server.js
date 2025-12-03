@@ -13,7 +13,7 @@ const serve = Bun.serve({
         }
 
         // OpenAI Chat API呼び出し
-        // 2025年現在主流model: gpt-3.5-turbo もしくは gpt-4o.  各社無料・有料キーがあります
+        // 2025年現在主流model: gpt-3.5-turbo もしくは gpt-4o. 各社無料・有料キーがあります
         const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
           method: "POST",
           headers: {
